@@ -1,6 +1,12 @@
 # libmsym v0.2.2
 libmsym is a C library dealing with point group symmetry in molecules.
 
+This is a fork from mcodev31 libmsym project. [https://github.com/mcodev31/libmsym](https://github.com/mcodev31/libmsym), 
+if you like this project, please go to star him.
+
+The project is uploaded to pypi for convenience. The pypi package may only suitable for Linux(Centso/Ubuntu).
+
+
 ## molecules
 Determine, symmetrize and generate molecules of any point group as well determine/select subgroups.
 Get symmetrically equivalent elements and symmetrize translation of any any element in a molecule.

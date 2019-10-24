@@ -7,7 +7,7 @@
 #
 #  Distributed under the MIT License ( See LICENSE file or copy at http://opensource.org/licenses/MIT )
 #
-
+import os
 from ctypes import *
 from ctypes.util import find_library
 from enum import Enum
@@ -15,6 +15,7 @@ from copy import copy
 from . import _libmsym_install_location, export
 
 _lib = None
+BASEDIR = os.path.dirname(os.path.abspath(__file__))
 
 @export
 class Error(Exception):
@@ -400,7 +401,8 @@ def init(library_location=None):
 _libmsym_location = find_library('msym')
 
 if _libmsym_location is None:
-    _libmsym_location = _libmsym_install_location
+    # _libmsym_location = _libmsym_install_location
+    _libmsym_location = os.path.join(BASEDIR, 'libmsym.so')
 
 if not (_libmsym_location is None):
     init(_libmsym_location)
