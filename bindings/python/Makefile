@@ -4,6 +4,7 @@ pes_parent_dir:=$(shell pwd)/$(lastword $(MAKEFILE_LIST))
 pes_parent_dir:=$(shell dirname $(pes_parent_dir))
 
 Project=$(shell basename $(pes_parent_dir))
+Platform=$(shell python -c 'import distutils.util; platform=distutils.util.get_platform(); platform="manylinux1_x86_64" if platform.startswith("linux") else platform; print(platform);')
 
 all:
 	make reqs
@@ -22,7 +23,7 @@ build:
 	[ -e ../../build/libmsym.so ] && cp -a ../../build/libmsym.so* libmsym/ || echo
 	[ -e ../../build/libmsym.dylib ] && cp -a ../../build/libmsym.*dylib libmsym/ || echo
 	rm -rf build/ sdist/ dist/ $(Project)-*/ $(Project).egg-info/
-	python setup.py bdist_wheel -p `python -c 'import distutils.util; print(distutils.util.get_platform());'`
+	python setup.py bdist_wheel -p $(Platform)
 	twine check dist/*
 
 install:
