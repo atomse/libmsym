@@ -19,10 +19,10 @@ reqs:
 	cat requirements.txt 
 
 build:
-	cp -a ../../build/libmsym.so* libmsym/
+	[ -e ../../build/libmsym.so ] && cp -a ../../build/libmsym.so* libmsym/ || echo
+	[ -e ../../build/libmsym.dylib ] && cp -a ../../build/libmsym.*dylib libmsym/ || echo
 	rm -rf build/ sdist/ dist/ $(Project)-*/ $(Project).egg-info/
-	python setup.py sdist build
-	python setup.py bdist_wheel --universal
+	python setup.py bdist_wheel -p `python -c 'import distutils.util; print(distutils.util.get_platform());'`
 	twine check dist/*
 
 install:
