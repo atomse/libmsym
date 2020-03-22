@@ -2,7 +2,7 @@ __all__ = []
 
 _libmsym_install_location = None
 
-__version__ = '0.2.4'
+__version__ = '0.2.4.2'
 
 
 def export(defn):
