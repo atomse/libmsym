@@ -158,3 +158,6 @@ run/
 AtomsShell_*
 tests/gromacs*/
 libmsym.so*
+
+build-win/*
+!build-win/Makefile

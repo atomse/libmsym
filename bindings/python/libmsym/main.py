@@ -447,6 +447,8 @@ if _libmsym_location is None:
         _libmsym_location = os.path.join(BASEDIR, 'libmsym.so')
     elif sys.platform == 'darwin':
         _libmsym_location = os.path.join(BASEDIR, 'libmsym.dylib')
+    elif sys.platform == 'win32':
+        _libmsym_location = os.path.join(BASEDIR, 'msym.dll')
     else:
         raise NotImplementedError(sys.platform + ' not supported')
 
