@@ -12,3 +12,4 @@ $(objects): %.o: ../src/%.c
 
 msym.dll: $(objects)
 	gcc -fPIC -Wl,-soname -shared -o msym.dll basis_function.o character_table.o context.o debug.o elements.o equivalence_set.o geometry.o linalg.o msym.o msym_error.o permutation.o point_group.o rsh.o subspace.o symmetrize.o symmetry.o symop.o   basis_function.o -lm
+	cp msym.dll ../bindings/python/libmsym
