@@ -16,9 +16,11 @@ from setuptools import setup
 def find_library(name):
     res = []
     for fname in os.listdir(name):
-        if fname.endswith('.dylib'):
+        if fname.endswith('.dylib'): # Mac shared lib
             res.append(fname)
-        elif '.so' in fname:
+        elif fname.endswith('.so'): # Linux shared lib
+            res.append(fname)
+        elif fname.endswith('.dll'): # Windows shared lib
             res.append(fname)
     return res
 
